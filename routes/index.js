@@ -8,7 +8,7 @@ const ig = new IgApiClient();
 router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 
-router.get("/getInsta", async(req, res) => {
+router.post("/getInsta", async(req, res) => {
     // const ig = new IgApiClient();
     ig.state.generateDevice("rehmanali_17");
     // ig.state.proxyUrl = process.env.IG_PROXY;
@@ -35,7 +35,7 @@ router.get("/getInsta", async(req, res) => {
     // );
 
            // Replace with the username of the user you want to scrape data from
-        const user = await ig.user.searchExact('kyliejenner');
+        const user = await ig.user.searchExact(req.body.username);
       
         // console.log(user);
       
