@@ -52,15 +52,17 @@ router.post("/getInsta", async(req, res) => {
       const followingFeed = await ig.feed.accountFollowing(user.pk).items();
       // console.log(followingFeed);
     
-
+      const tagsFeed = await ig.feed.usertags(user.pk).items();
+    
+    //   const reelsFeed = await ig.feed.ReelsMediaFeed(user.pk).items();
+    
       res.status(200).json({
           userPost: posts,
-          total_post: posts.length,
+          userTagged: tagsFeed,
+        //   userReels: reelsFeed,
           userFollowers: followersFeed,
-          total_followes: followersFeed.length,
           userFollowing: followingFeed,
-          total_Following: followingFeed.length
-      }) 
+       }) 
    }catch(err){
      res.status(400).json({
         message: "Invalid Username or private account",
