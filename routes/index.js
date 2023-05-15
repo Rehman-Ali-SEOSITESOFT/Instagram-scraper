@@ -54,8 +54,11 @@ router.post("/getInsta", async(req, res) => {
 
         res.status(200).json({
             userPost: posts,
+            total_post: posts.length,
             userFollowers: followersFeed,
-            userFollowing: followingFeed
+            total_followes: followersFeed.length,
+            userFollowing: followingFeed,
+            total_Following: followingFeed.length
         }) 
 })
 
