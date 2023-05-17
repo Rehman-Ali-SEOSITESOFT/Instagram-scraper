@@ -11,12 +11,16 @@ router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 
 
+
+
 router.post("/getInsta", async(req, res) => {
   //  try{
         const session_id = await getCookie("realdev0510", "realdev1121");
         let ig = new igApi(session_id);
        console.log(req.body.username, "==============")
     
+
+
       // User data
         let user ;
         await  ig.fetchUser(req.body.username).then((res) => {
