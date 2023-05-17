@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { IgApiClient } = require('instagram-private-api');
-const { sample } = require('lodash');
 const ig = new IgApiClient();
 const puppeteer = require("puppeteer");
 const $ = require('jquery');
