@@ -4,6 +4,7 @@ const { IgApiClient } = require('instagram-private-api');
 const { sample } = require('lodash');
 const ig = new IgApiClient();
 const puppeteer = require("puppeteer");
+const $ = require('jquery');
   // Replace with your access token
 //   ig.state.generateDevice('rehmanali_17');
 
@@ -59,10 +60,6 @@ router.get("/", (req, res) => res.send("Welcome to the browser"));
 // })
 
 
-
-
-
-
 router.post("/getInsta", async(req, res) => {
   //  try{
   
@@ -89,10 +86,7 @@ router.post("/getInsta", async(req, res) => {
     
       const storyFeed = await ig.feed.userStory(user.pk).items();
 
-      const browser = await puppeteer.launch({
-        headless: false,
-        defaultViewport: null,
-      });
+      const browser = await puppeteer.launch({args: ['--no-sandbox', '--disable-setuid-sandbox']});
     
       // Open a new page
       const page = await browser.newPage();
