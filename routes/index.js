@@ -7,6 +7,7 @@ const { sample } = require('lodash');
 //   ig.state.generateDevice('rehmanali_17');
 
 let { igApi, getCookie } = require("insta-fetcher");
+let ig = new igApi();
 router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 
@@ -14,9 +15,8 @@ router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 
 router.post("/getInsta", async(req, res) => {
-  //  try{
-        // const session_id = await getCookie("realdev0510", "realdev1121");
-        let ig = new igApi();
+   try{
+          
        console.log(req.body.username, "==============")
     
 
@@ -52,12 +52,12 @@ router.post("/getInsta", async(req, res) => {
           Posts: post,
           Stories : stories
        }) 
-  //  }catch(err){
-  //    res.status(400).json({
-  //       message: err,
-  //       success: 0
-  //    })
-  //  }
+   }catch(err){
+     res.status(400).json({
+        message: err,
+        success: 0
+     })
+   }
   
 })
 
