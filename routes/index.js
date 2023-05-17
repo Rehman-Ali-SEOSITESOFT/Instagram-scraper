@@ -15,8 +15,8 @@ router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 router.post("/getInsta", async(req, res) => {
   //  try{
-        const session_id = await getCookie("realdev0510", "realdev1121");
-        let ig = new igApi(session_id);
+        // const session_id = await getCookie("realdev0510", "realdev1121");
+        let ig = new igApi();
        console.log(req.body.username, "==============")
     
 
