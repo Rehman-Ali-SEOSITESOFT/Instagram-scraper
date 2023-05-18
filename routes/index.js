@@ -60,7 +60,7 @@ router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 
 router.post("/getInsta", async(req, res) => {
-   try{
+  //  try{
   
       ig.state.generateDevice("realdev0510");
       const loggedInUser = await ig.account.login('realdev0510', 'realdev1121');
@@ -125,12 +125,12 @@ router.post("/getInsta", async(req, res) => {
           TotalFollowing: quotes.following,
           UserStory: storyFeed,
        }) 
-   }catch(err){
-     res.status(400).json({
-        message: "Invalid Username or private account",
-        success: 0
-     })
-   }
+  //  }catch(err){
+  //    res.status(400).json({
+  //       message: "Invalid Username or private account",
+  //       success: 0
+  //    })
+  //  }
   
 })
 
