@@ -13,16 +13,16 @@ const axios = require('axios')
 // let { igApi, getCookie } = require("insta-fetcher");
 // router.get("/", (req, res) => res.send("Welcome to the browser"));
 router.get("/data", (req, res) => {
-  const  url = encodeURIComponent('https://www.instagram.com/p/B5LQhLiFFCX');
+  const  url = encodeURIComponent('https://www.instagram.com/joeel56');
    axios.get(`https://api.crawlbase.com/scraper?token=4CLkaI0xDZYLxkZ0Vy4UFA&url=${url}`)
    .then((ress) => {
-    console.log(ress, "data==========")
+    // console.log(ress, "data==========")
     res.status(200).json({
      data: ress.data  
      }) 
    })
    .catch(err => {
-    console.log(err, "err==========")
+    // console.log(err, "err==========")
 
     // res.status(200).json({
     //   err: err.response }) 
