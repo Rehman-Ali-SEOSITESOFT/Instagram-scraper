@@ -1,5 +1,6 @@
 const cors = require("cors");
-const express = require("express");;
+const express = require("express");
+const puppeteer = require('puppeteer');
 const bodyParser = require("body-parser");
 const app = express();
 
