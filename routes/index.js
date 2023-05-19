@@ -3,12 +3,48 @@ const router = express.Router();
 const { IgApiClient } = require('instagram-private-api');
 const ig = new IgApiClient();
 const puppeteer = require("puppeteer");
+const https = require('https');
 const $ = require('jquery');
-  // Replace with your access token
+const axios = require('axios') 
+
+// Replace with your access token
 //   ig.state.generateDevice('rehmanali_17');
 
 // let { igApi, getCookie } = require("insta-fetcher");
-router.get("/", (req, res) => res.send("Welcome to the browser"));
+// router.get("/", (req, res) => res.send("Welcome to the browser"));
+router.get("/data", (req, res) => {
+  const  url = encodeURIComponent('https://www.instagram.com/p/B5LQhLiFFCX');
+   axios.get(`https://api.crawlbase.com/scraper?token=4CLkaI0xDZYLxkZ0Vy4UFA&url=${url}`)
+   .then((ress) => {
+    console.log(ress, "data==========")
+    res.status(200).json({
+     data: ress.data  
+     }) 
+   })
+   .catch(err => {
+    console.log(err, "err==========")
+
+    // res.status(200).json({
+    //   err: err.response }) 
+    })
+   
+
+
+//   const url = encodeURIComponent('https://www.instagram.com/joeel56/');
+// const options = {
+//   hostname: 'api.crawlbase.com',
+//   path: '/scraper?token=4CLkaI0xDZYLxkZ0Vy4UFA&url=' + url
+// };
+
+// https.request(options, (response) => {
+//   let body = '';
+//   response.on('data', chunk => body += chunk).on('end', () => console.log(body));
+// }).end();
+
+
+
+
+});
 
 
 
@@ -60,7 +96,7 @@ router.get("/", (req, res) => res.send("Welcome to the browser"));
 
 
 router.post("/getInsta", async(req, res) => {
-   try{
+  //  try{
   
       ig.state.generateDevice("realdev0510");
       const loggedInUser = await ig.account.login('realdev0510', 'realdev1121');
@@ -125,12 +161,12 @@ router.post("/getInsta", async(req, res) => {
           TotalFollowing: quotes.following,
           UserStory: storyFeed,
        }) 
-   }catch(err){
-     res.status(400).json({
-        message: "Invalid Username or private account",
-        success: 0
-     })
-   }
+  //  }catch(err){
+  //    res.status(400).json({
+  //       message: "Invalid Username or private account",
+  //       success: 0
+  //    })
+  //  }
   
 })
 
