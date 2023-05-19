@@ -66,13 +66,13 @@ router.post("/getInsta", async(req, res) => {
   const  url = `https://www.instagram.com/${req.body.username}`;
    await  axios.get(`https://api.crawlbase.com/?token=UW6GgBzjINbtxsDFB6y3WQ&url=${url}&autoparse=true`)
    .then(async(ress) => {
-    console.log(ress, "data==========")
+    // console.log(ress, "data==========")
     await res.status(200).json({
      data: ress.data  
      }) 
    })
    .catch(err => {
-    console.log(err, "err==========")
+    // console.log(err, "err==========")
 
      res.status(200).json({
       err: err.response }) 
